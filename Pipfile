@@ -13,6 +13,7 @@ flask = "*"
 selenium = "*"
 ipykernel = "*"
 beautifulsoup4 = "*"
+splinter = "*"
 
 [requires]
 python_version = "3.7"
