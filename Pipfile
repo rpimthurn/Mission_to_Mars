@@ -14,6 +14,8 @@ selenium = "*"
 ipykernel = "*"
 beautifulsoup4 = "*"
 splinter = "*"
+lxml = "*"
+html5lib = "*"
 
 [requires]
 python_version = "3.7"
