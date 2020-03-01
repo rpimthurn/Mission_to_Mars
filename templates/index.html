@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <title>Mission to Mars</title>
+    </head>
+
+    <body>
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <!-- <a href="/scrape" input type="button" value="Scrape"></a> -->
+            <a class="btn btn-primary" href="/scrape" role="button">Scrape</a>
+        </div>
+        <br>
+        <div class="container">
+            <h3>Mars News</h3>
+            <h4>{{mars.news_title}}</h4>
+            <p>{{ mars.news_snippet }}</p>
+        </div>
+        <!-- <br>
+        <div class="container">
+            <div class="col-8">
+                <h3>Featured Mars Image</h3>
+                <img src= "{{mars.featured_img_url}}" >
+            </div>
+            <div class="col-4">
+                <h4>Mars Weather</h4>
+                <p>{{mars.mars_weather}}</p>
+                <br>
+                <h4>Mars Facts</h4>
+                <p>{{ mars.mars_facts|safe }}</p>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <h4 class="text-center">Hemispheres of Mars</h4>
+        </div> -->
+    </body>
+</html>
