@@ -18,7 +18,7 @@
 
         <!-- news title with snippet -->
         <div class="container-fluid">
-            <div class="col-md-12" style="padding: 2%;">
+            <div class="col-8" style="padding: 2%;">
                 <h3>Mars News</h3>
                 <h4>{{ mars.news_title }}</h4>
                 <p>{{ mars.news_snippet }}</p>
@@ -34,12 +34,10 @@
                 <div class="col-md-8">
                   <h2>Featured Mars Image</h2>
                     <!-- if images is False/None/non-existent, then default to error message -->
-                    <img src="{{mars.featured_img_url}}" class="img-responsive"
-                    alt="Responsive image">
+                    <img src="{{mars.featured_img_url}}" class="img-responsive" width = "100%">
                 </div>
                 <div class="col-md-4">
                   <!-- Mars Weather Mars Facts -->
-                  <div class="row" id="mars-weather">
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-body">
@@ -47,7 +45,9 @@
                                 <p>{{mars.mars_weather}}</p>
                                 <br>
                                 <h4>Mars Facts</h4>
+                                <div text-align="center">
                                 {{mars.mars_facts| safe}} 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
             <hr>
         </div>
         
-        <div class="card-deck">
+        <!-- <div class="card-deck">
             <div class="card" style="width: 32rem;">
                 <div class="thumbnail">
                     <img src="https://astrogeology.usgs.gov/cache/images/cfa62af2557222a02478f1fcd781d445_cerberus_enhanced.tif_full.jpg" class="card-img-top" object-fit="cover">
@@ -99,15 +99,22 @@
                 <h5 class="card-title">Valles Marineris Hemisphere</h5>
                 </div>
             </div>   
-        </div>
+        </div> -->
 
 
-        <!-- {% for hemisphere in mars.hemispheres %}
-            <div class="card">
-                <img src={{hemisphere.url}}>
-            <h4 class="card-title text-center">{{mars.hemispheres}}</h4>
-            </div>
-        {% endfor %} -->
-            
+        
+        <div class="card-deck">
+            {% for hemisphere in mars.hemispheres %}
+                <div class="card" style="width: 32rem;">
+                    <div class="thumbnail">
+                        <img src="{{hemisphere.url}}" class="card-img-top" >
+                    </div>
+                    <div class="card-body">
+                    <h5 class="card-title">{{hemisphere.title}}</h5>
+                    </div>
+                    <br>
+                </div>
+            {% endfor %}
+        </div>    
     </body>
 </html>

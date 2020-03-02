@@ -9,9 +9,16 @@ client = pymongo.MongoClient(conn)
 
 db = client.mars_db
 
+# @app.before_first_request
+# def init_app():
+#     mars_data = scrape_mars.scrape() 
+#     db.marsdata.insert_one(mars_data)
+       
+
 @app.route("/")
 def index():
     mars_data = db.marsdata.find_one()
+    mars_data = scrape_mars.scrape()
     return render_template("index.html", mars = mars_data)
     
 
@@ -19,7 +26,9 @@ def index():
 def scrape():
     mars_data = scrape_mars.scrape() 
     print(mars_data)
+    db.marsdata.drop()
     db.marsdata.insert_one(mars_data)
+    
     return redirect("/")
 
 

@@ -16,6 +16,7 @@ beautifulsoup4 = "*"
 splinter = "*"
 lxml = "*"
 html5lib = "*"
+flask-pymongo = "*"
 
 [requires]
 python_version = "3.7"
