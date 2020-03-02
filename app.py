@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 import pymongo
 import scrape_mars
 
@@ -12,15 +12,15 @@ db = client.mars_db
 @app.route("/")
 def index():
     mars_data = db.marsdata.find_one()
-    return render_template("index.html", mars=mars_data)
-
-
+    return render_template("index.html", mars = mars_data)
+    
 
 @app.route("/scrape")
 def scrape():
-    mars_data = scrape_mars.scrape()
-    db.marsdata.update({}, mars_data, upsert=True)
-    return "Scraping Successful"
+    mars_data = scrape_mars.scrape() 
+    print(mars_data)
+    db.marsdata.insert_one(mars_data)
+    return redirect("/")
 
 
 

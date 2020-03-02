@@ -6,6 +6,7 @@ import requests
 from pprint import pprint
 
 
+
 def scrape():
 
     # NASA MARS NEWS
@@ -52,7 +53,9 @@ def scrape():
     mars_facts_df = pd.read_html(MARS_FACTS_URL)[0]
 
     mars_facts_df.columns = ["Description", "Values"]
-    mars_facts_df.set_index("Description")
+    mars_facts_df.set_index("Description").to_dict(orient = "records")
+    mars_facts = mars_facts_df.to_html()
+    mars_facts
 
     # Mars Hemispheres
     MARS_HEMI_URL = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
@@ -84,23 +87,23 @@ def scrape():
         
     image_url
 
-    hemisphere_image_urls = []
+    hemisphere_image = []
     for e in range(len(hemisphere_name)):
         hemisphere_dict = {}
         hemisphere_dict["title"] = hemisphere_name[e]
         hemisphere_dict["url"] = image_url[e]
         
-        hemisphere_image_urls.append(hemisphere_dict)
+        hemisphere_image.append(hemisphere_dict)
         
-    hemisphere_image_urls
+    hemisphere_image
 
     mars_data = {
         "news_title": latest_news_title,
         "news_snippet": latest_news_p,
         "featured_img_url": feat_mars_img_url,
         "mars_weather": mars_weather,
-        "mars_facts": mars_facts_df,
-        "hemishpheres": hemisphere_image_urls
+        "mars_facts": mars_facts,
+        "hemispheres": hemisphere_image
     }
 
 

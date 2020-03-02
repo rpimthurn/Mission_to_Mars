@@ -8,34 +8,106 @@
     </head>
 
     <body>
+        <!-- title with scrape button -->
         <div class="jumbotron text-center">
             <h1>Mission to Mars</h1>
-            <!-- <a href="/scrape" input type="button" value="Scrape"></a> -->
             <a class="btn btn-primary" href="/scrape" role="button">Scrape</a>
         </div>
+
         <br>
-        <div class="container">
-            <h3>Mars News</h3>
-            <h4>{{mars.news_title}}</h4>
-            <p>{{ mars.news_snippet }}</p>
-        </div>
-        <!-- <br>
-        <div class="container">
-            <div class="col-8">
-                <h3>Featured Mars Image</h3>
-                <img src= "{{mars.featured_img_url}}" >
-            </div>
-            <div class="col-4">
-                <h4>Mars Weather</h4>
-                <p>{{mars.mars_weather}}</p>
-                <br>
-                <h4>Mars Facts</h4>
-                <p>{{ mars.mars_facts|safe }}</p>
+
+        <!-- news title with snippet -->
+        <div class="container-fluid">
+            <div class="col-md-12" style="padding: 2%;">
+                <h3>Mars News</h3>
+                <h4>{{ mars.news_title }}</h4>
+                <p>{{ mars.news_snippet }}</p>
             </div>
         </div>
+
         <br>
-        <div class="container">
+
+        
+        <div class="container-fluid">
+            <!-- featured picture -->
+            <div class="row" id="mars-featured-image">
+                <div class="col-md-8">
+                  <h2>Featured Mars Image</h2>
+                    <!-- if images is False/None/non-existent, then default to error message -->
+                    <img src="{{mars.featured_img_url}}" class="img-responsive"
+                    alt="Responsive image">
+                </div>
+                <div class="col-md-4">
+                  <!-- Mars Weather Mars Facts -->
+                  <div class="row" id="mars-weather">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4>Mars Weather</h4>
+                                <p>{{mars.mars_weather}}</p>
+                                <br>
+                                <h4>Mars Facts</h4>
+                                {{mars.mars_facts| safe}} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+                        
+        </div>
+        <br>
+        <div class="container-fluid">
             <h4 class="text-center">Hemispheres of Mars</h4>
-        </div> -->
+            <hr>
+        </div>
+        
+        <div class="card-deck">
+            <div class="card" style="width: 32rem;">
+                <div class="thumbnail">
+                    <img src="https://astrogeology.usgs.gov/cache/images/cfa62af2557222a02478f1fcd781d445_cerberus_enhanced.tif_full.jpg" class="card-img-top" object-fit="cover">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Cerberus Hemisphere</h5>
+                </div>
+            </div>
+            <div class="card" style="width: 32rem;">
+                <div class="thumbnail">
+                    <img src="https://astrogeology.usgs.gov/cache/images/3cdd1cbf5e0813bba925c9030d13b62e_schiaparelli_enhanced.tif_full.jpg" class="card-img-top" object-fit="cover">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Schiaparelli Hemisphere</h5>
+                </div>
+            </div>   
+        </div>  
+        <br>
+        <div class="card-deck">
+            <div class="card" style="width: 32rem;">
+                <div class="thumbnail">
+                    <img src="https://astrogeology.usgs.gov/cache/images/ae209b4e408bb6c3e67b6af38168cf28_syrtis_major_enhanced.tif_full.jpg" class="card-img-top" object-fit="cover">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Syrtis Major Hemisphere</h5>
+                </div>
+            </div>
+            <div class="card" style="width: 32rem;">
+                <div class="thumbnail">
+                    <img src="https://astrogeology.usgs.gov/cache/images/7cf2da4bf549ed01c17f206327be4db7_valles_marineris_enhanced.tif_full.jpg" class="card-img-top" object-fit="cover">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Valles Marineris Hemisphere</h5>
+                </div>
+            </div>   
+        </div>
+
+
+        <!-- {% for hemisphere in mars.hemispheres %}
+            <div class="card">
+                <img src={{hemisphere.url}}>
+            <h4 class="card-title text-center">{{mars.hemispheres}}</h4>
+            </div>
+        {% endfor %} -->
+            
     </body>
 </html>
