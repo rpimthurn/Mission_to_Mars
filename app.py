@@ -8,12 +8,7 @@ conn = "mongodb://localhost:27017"
 client = pymongo.MongoClient(conn)
 
 db = client.mars_db
-
-# @app.before_first_request
-# def init_app():
-#     mars_data = scrape_mars.scrape() 
-#     db.marsdata.insert_one(mars_data)
-       
+      
 
 @app.route("/")
 def index():
